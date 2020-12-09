@@ -21,7 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class RealTimeActivity extends AppCompatActivity {
-    private EditText mEditTextMensaje;
+    private EditText metTitulo;
+    private EditText medMensaje;
     private Button mBtnCrearDatos;
 
     private DatabaseReference mDatabase;
@@ -35,7 +36,8 @@ public class RealTimeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real_time);
 
-        mEditTextMensaje = findViewById(R.id.etTitulo);
+        metTitulo = findViewById(R.id.etTitulo);
+        medMensaje = findViewById(R.id.etMensaje);
         mBtnCrearDatos = findViewById(R.id.btnCrearDatos);
         mRecyclerView = findViewById(R.id.recyclerViewMensajes);
 
@@ -46,7 +48,7 @@ public class RealTimeActivity extends AppCompatActivity {
         mBtnCrearDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mensaje = mEditTextMensaje.getText().toString();
+                String mensaje = metTitulo.getText().toString();
                 mDatabase.child("Mensaje").push().child("titulo").setValue(mensaje);
                 mDatabase.child("Mensaje").push().child("mensaje").setValue(mensaje);
             }
