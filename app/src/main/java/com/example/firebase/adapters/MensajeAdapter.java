@@ -55,8 +55,8 @@ public class MensajeAdapter extends RecyclerView.Adapter<MensajeAdapter.ViewHold
             super(view);
 
             this.view = view;
-            this.mtvTitulo = view.findViewById(R.id.tvTitulo);
-            this.mtvMensaje = view.findViewById(R.id.tvMensaje);
+            this.mtvTitulo = view.findViewById(R.id.tvMenTitulo);
+            this.mtvMensaje = view.findViewById(R.id.tvMenTexto);
         }
     }
 }

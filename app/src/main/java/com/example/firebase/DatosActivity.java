@@ -26,7 +26,7 @@ public class DatosActivity extends AppCompatActivity implements ValueEventListen
         setContentView(R.layout.activity_datos);
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("mensaje");
-        metMensaje = findViewById(R.id.etMensaje);
+        metMensaje = findViewById(R.id.etMenTexto);
         mtvDatos = findViewById(R.id.tvDatos);
         myRef.addValueEventListener(this);
     }

@@ -22,22 +22,22 @@ import java.util.ArrayList;
 
 public class RealTimeActivity extends AppCompatActivity {
     private EditText metTitulo;
-    private EditText medMensaje;
+    private EditText metMensaje;
     private Button mBtnCrearDatos;
 
     private DatabaseReference mDatabase;
 
     private MensajeAdapter mAdapter;
     private RecyclerView mRecyclerView;
-    private ArrayList<Mensaje> mMensajeList = new ArrayList<>();
+    private final ArrayList<Mensaje> mMensajeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real_time);
 
-        metTitulo = findViewById(R.id.etTitulo);
-        medMensaje = findViewById(R.id.etMensaje);
+        metTitulo = findViewById(R.id.etMenTitulo);
+        metMensaje = findViewById(R.id.etMenTexto);
         mBtnCrearDatos = findViewById(R.id.btnCrearDatos);
         mRecyclerView = findViewById(R.id.recyclerViewMensajes);
 
@@ -48,9 +48,12 @@ public class RealTimeActivity extends AppCompatActivity {
         mBtnCrearDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mensaje = metTitulo.getText().toString();
-                mDatabase.child("Mensaje").push().child("titulo").setValue(mensaje);
+                String titulo = metTitulo.getText().toString();
+                String mensaje = metMensaje.getText().toString();
+                mDatabase.child("Mensaje").push().child("titulo").setValue(titulo);
                 mDatabase.child("Mensaje").push().child("mensaje").setValue(mensaje);
+                metTitulo.setText("");
+                metMensaje.setText("");
             }
         });
 
@@ -65,8 +68,8 @@ public class RealTimeActivity extends AppCompatActivity {
                     mMensajeList.clear();
 
                     for (DataSnapshot ds: dataSnapshot.getChildren()){
-                        String titulo = ds.child("titulo").getValue().toString();
-                        String mensaje = ds.child("mensaje").getValue().toString();
+                        String titulo = (String) ds.child("titulo").getValue();
+                        String mensaje = (String) ds.child("mensaje").getValue();
                         Mensaje objMensaje = new Mensaje(titulo, mensaje);
                         mMensajeList.add(objMensaje);
                     }

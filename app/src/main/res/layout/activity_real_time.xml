@@ -8,13 +8,13 @@
     android:layout_margin="20dp">
 
     <EditText
-        android:id="@+id/etTitulo"
+        android:id="@+id/etMenTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Titulo" />
 
     <EditText
-        android:id="@+id/etMensaje"
+        android:id="@+id/etMenTexto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Mensaje" />

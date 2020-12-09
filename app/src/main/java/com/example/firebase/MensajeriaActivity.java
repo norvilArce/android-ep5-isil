@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ResourceBundle;
-
 public class MensajeriaActivity extends AppCompatActivity {
     BroadcastReceiver broadcastReceiver;
     @Override
@@ -32,7 +30,7 @@ public class MensajeriaActivity extends AppCompatActivity {
                 public void onReceive(Context context, Intent intent) {
                     Bundle bundle = intent.getExtras();
                     TextView mtvRemitente = findViewById(R.id.tvRemitente);
-                    TextView mtvtitulo = findViewById(R.id.tvTitulo);
+                    TextView mtvtitulo = findViewById(R.id.tvMenTitulo);
                     TextView mtvContenido = findViewById(R.id.tvContenido);
                     ImageView mivImagen = findViewById(R.id.ivImagen);
 
